@@ -8,7 +8,7 @@ import OutputBox from './containers/OutputBox/OutputBox';
 function App() {
   return (
     <div className="App">
-      <h1>Apprendre à coder avec la 3WA !</h1>
+      <h1><span>&lt;</span>Apprendre à coder avec la 3WA !<span>&gt;</span></h1>
       <Scenario></Scenario>
       <section>
         <div>

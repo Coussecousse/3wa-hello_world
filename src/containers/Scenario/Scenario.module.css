@@ -1,0 +1,44 @@
+.scenarioText{
+    min-height: 250px;
+}
+
+.code {
+    position: relative;
+    color: #D4D4D4;
+    font-family: monospace;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow: auto;
+    padding: 2rem 1rem 1rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #1E1E1E;
+    margin-bottom: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f5f5f5;
+}
+
+.typeCode {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .25rem 1rem;
+    font-weight: 600;
+}
+.HTML {
+    background-color: #E5532D;
+    color: #FFFFFF;
+}
+
+.CSS {
+    background-color: #2667AB;
+    color: #FFF;
+}
+
+.Javascript {
+    background-color: #F7DF1E;
+    color: #000;
+}
