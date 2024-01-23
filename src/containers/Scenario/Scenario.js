@@ -134,17 +134,17 @@ setInterval(addAnimateToLetter, 1500);
     console.log(scenario[1]['description'])
     return (
         <section id="scenario">
-            <div class={style.scenarioText}>
-                <p>{scenario[step]['description']}</p>
+            <div className={style.scenarioText}>
+                <p className={style.text}>{scenario[step]['description']}</p>
                 {scenario[step]['code'] ?
                     displayCode(scenario[step])
                     : null
                 }
             </div>
-            <div>
-                <div>
-                    {step === 1 && <button onClick={() => setStep(step - 1)}>Etape précédente</button>}
-                    <button onClick={() => setStep(step + 1)}>Prochaine étape</button>
+            <div className={style.buttonsContainer}>
+                <div className={style.previousNextContainer}>
+                    {step === 1 && <button onClick={() => setStep(step - 1)}><i class="fa-solid fa-arrow-left"></i>Etape précédente</button>}
+                    <button onClick={() => setStep(step + 1)}>Prochaine étape<i class="fa-solid fa-arrow-right"></i></button>
                 </div>
                 <button onClick={() => window.location.reload(false)}>Recommencer</button>
             </div>
