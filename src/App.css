@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+}
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.logo {
+    max-width: 150px;
+    padding-bottom: 1rem;
+}
+
+h1 span{
+    color: #cd1316;
+}
+.left {
+    margin-right: .5rem;
+}
+.right {
+    margin-left: .5rem;
+}

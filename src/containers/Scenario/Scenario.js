@@ -110,11 +110,6 @@ setInterval(addAnimateToLetter, 1500);
         ]
 
     const [step, setStep] = useState(0);
-    const [type, setType] = useState('');
-
-    useEffect(() => {
-        setType(scenario[step]['type'])
-    }, [step])
     
     function displayCode(scenario) {
         switch(scenario['type']) {
