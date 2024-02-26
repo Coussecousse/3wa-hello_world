@@ -1,0 +1,34 @@
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonsContainer button {
+    background-color: #cd1316;
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 14px 25px;    
+    cursor: pointer;
+    transition: .2s;
+}
+.buttonsContainer button:hover {
+    background-color: #FFFFFF; 
+    color: #CE4E50;
+    outline : 1px solid #CE4E50;
+}
+
+.previousNextContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.previousNextContainer button {
+    display: flex;   
+    gap: .5rem;
+}
