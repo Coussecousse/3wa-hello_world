@@ -4,8 +4,10 @@ import { useState } from 'react';
 import Scenario from './containers/Scenario/Scenario';
 import HTMLBox from './containers/HTMLBox/HTMLBox';
 import CSSBox from './containers/CSSBox/CSSBox';
+import JSBox from './containers/JSBox/JSBox';
 import OutputBox from './containers/OutputBox/OutputBox';
-import Buttons from './containers/Buttons/Buttons';
+import ScenarioButtons from './containers/ScenarioButtons/ScenarioButtons';
+import RestartButton from './containers/RestartButton/RestartButton';
 
 import logo_3WA from './assets/images/logo_3WA.svg';
 
@@ -29,16 +31,20 @@ function App() {
       <img src={logo_3WA} className="logo"></img>
       <h1><span className='left'>&lt;</span>Apprendre à coder avec la 3W Academy !<span className='right'>&gt;</span></h1>
       <Scenario step={step}></Scenario>
-      <section className="iframes-section">
-        <div className="iframes-code">
-          <HTMLBox></HTMLBox>
-          <CSSBox></CSSBox>
+      <ScenarioButtons addStep={addStep} removeStep={removeStep} step={step}></ScenarioButtons>
+      <section className='iframes-section'>
+        <div className='iframes-container'>
+          <div className="iframes-code">
+            <HTMLBox></HTMLBox>
+            <CSSBox></CSSBox>
+          </div>
+          <div className="iframe-output">
+            <OutputBox></OutputBox>
+          </div>
         </div>
-        <div className="iframe-output">
-          <OutputBox></OutputBox>
-        </div>
+        <JSBox></JSBox>
       </section>
-      <Buttons addStep={addStep} removeStep={removeStep} restart={restart} step={step} ></Buttons>
+      <RestartButton restart={restart} ></RestartButton>
     </div>
   );
 }

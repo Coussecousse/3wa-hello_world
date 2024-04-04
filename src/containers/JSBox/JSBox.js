@@ -1,24 +1,25 @@
 import CodeMirror from "@uiw/react-codemirror";
 import { vscodeDark } from "@uiw/codemirror-theme-vscode";
-import { css } from "@codemirror/lang-css";
+import { javascript } from "@codemirror/lang-javascript";
 
 import { useState, useCallback } from 'react';
 
-export default function CSSBox() {
+export default function JSBox() {
     const [code, setCode] = useState('');
 
     const handleChange = useCallback(val => {
         setCode(val);
-    }, [])
+    })
+
     return (
         <div className="codeMirror-container">
-            <div className="typeCode CSS">CSS</div>
+            <div className="typeCode Javascript">JS</div>
             <CodeMirror
                 value={code}
                 height="200px"
                 onChange={handleChange}
                 theme={vscodeDark}
-                extensions={[css()]}
+                extensions={[javascript()]}
             />
         </div>
     )

@@ -1,0 +1,19 @@
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.previousNextContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+.previousNextContainer button {
+    display: flex;   
+    gap: .5rem;
+}

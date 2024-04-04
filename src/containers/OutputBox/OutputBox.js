@@ -1,6 +1,6 @@
 export default function OutputBox() {
     return (
-        <div>
+        <div className="code-box">
             
         </div>
     )

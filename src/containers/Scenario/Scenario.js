@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
-
 import style from './Scenario.module.css';
 
-export default function Scenario() {
+export default function Scenario({step}) {
 
     const scenario = 
         [
@@ -108,22 +106,20 @@ setInterval(addAnimateToLetter, 1500);
                 description : "Et voilà ! Vous avez codé votre premier élément ! Vous pouvez maintenant recommencer si vous voulez !",
             }
         ]
-
-    const [step, setStep] = useState(0);
     
     function displayCode(scenario) {
         switch(scenario['type']) {
             case 'HTML': 
             return (
-                <div className={style.code}><div className={`${style.typeCode} ${style.HTML}`}>{scenario['type']}</div>{scenario['code']}</div>
+                <div className={`${style.code} code-box`}><div className={`typeCode HTML`}>{scenario['type']}</div>{scenario['code']}</div>
                 )
             case 'CSS':
                 return (
-                    <div className={style.code}><div className={`${style.typeCode} ${style.CSS}`}>{scenario['type']}</div>{scenario['code']}</div>
+                    <div className={`${style.code} code-box`}><div className={`typeCode CSS`}>{scenario['type']}</div>{scenario['code']}</div>
                 )
             case 'Javascript':
                 return (
-                    <div className={style.code}><div className={`${style.typeCode} ${style.Javascript}`}>{scenario['type']}</div>{scenario['code']}</div>
+                    <div className={`${style.code} code-box`}><div className={`typeCode Javascript`}>{scenario['type']}</div>{scenario['code']}</div>
                 )
             default : 
                 return null
@@ -131,7 +127,6 @@ setInterval(addAnimateToLetter, 1500);
     }
 
 
-    console.log(scenario[1]['description'])
     return (
         <section id="scenario">
             <div className={style.scenarioText}>
@@ -140,13 +135,6 @@ setInterval(addAnimateToLetter, 1500);
                     displayCode(scenario[step])
                     : null
                 }
-            </div>
-            <div className={style.buttonsContainer}>
-                <div className={style.previousNextContainer}>
-                    {step === 1 && <button onClick={() => setStep(step - 1)}><i class="fa-solid fa-arrow-left"></i>Etape précédente</button>}
-                    <button onClick={() => setStep(step + 1)}>Prochaine étape<i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-                <button onClick={() => window.location.reload(false)}>Recommencer</button>
             </div>
         </section>
     )
