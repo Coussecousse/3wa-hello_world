@@ -1,7 +1,10 @@
-export default function OutputBox() {
+export default function OutputBox({ code }) {
+    
     return (
-        <div className="code-box">
-            
-        </div>
+        <iframe id="output-frame"
+            height="100%"
+            width="100%"
+            srcDoc={code}>
+        </iframe>
     )
 }

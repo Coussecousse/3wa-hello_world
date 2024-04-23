@@ -4,11 +4,12 @@ import { html } from "@codemirror/lang-html";
 
 import { useState, useCallback } from 'react';
 
-export default function HTMLBox() {
+export default function HTMLBox({ handleChangeCode }) {
     const [code, setCode] = useState('');
 
     const handleChange = useCallback(val => {
         setCode(val);
+        handleChangeCode(val, 'html');
     }, [])
 
     return (

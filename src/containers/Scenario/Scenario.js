@@ -1,4 +1,9 @@
+import CodeMirror from "@uiw/react-codemirror";
 import style from './Scenario.module.css';
+import { vscodeDark } from "@uiw/codemirror-theme-vscode";
+import { html } from "@codemirror/lang-html";
+import { css } from "@codemirror/lang-css";
+import { javascript } from "@codemirror/lang-javascript";
 
 export default function Scenario({step}) {
 
@@ -11,7 +16,7 @@ export default function Scenario({step}) {
                 description : "D'abord, commençons par créer un élément HTML. Ici, nous allons créer un titre avec la balise <h1> qui sera contenu dans une section <section>. En HTML, toutes les balises ont une signification et doivent être utilisées correctement !",
                 code : `<section>
     <h1>Hello World</h1>
-<section>`, type: 'HTML'
+</section>`, type: 'HTML'
             },
             {
                 description : "Parfait ! Par contre ça manque de style... Pour cela, nous allons utiliser du CSS et selectionner l'élément que l'on cherche à modifier !",
@@ -41,7 +46,7 @@ h1 {
                 code : `<section>
     <h1>Hello World</h1>
     <h2><span>3</span><span>W</span><span>A</span></h2>
-<section>`, type: 'HTML'
+</section>`, type: 'HTML'
             },
             {
                 description : "Les balises span sont des balises qui permettent de modifier le style d'une partie du texte ! Nous allons donc commencer par préparer le CSS afin d'animer les lettres :",
@@ -126,13 +131,33 @@ setInterval(addAnimateToLetter, 1500);
         }
     }
 
+    function choseExtension(type) {
+        switch(type) {
+            case 'HTML':
+                return [html()]
+            case 'CSS':
+                return [css()]
+            case 'Javascript':
+                return [javascript()]
+            default:
+                return []
+        }
+    }
+
 
     return (
         <section id="scenario">
             <div className={style.scenarioText}>
                 <p className={style.text}>{scenario[step]['description']}</p>
                 {scenario[step]['code'] ?
-                    displayCode(scenario[step])
+                    // displayCode(scenario[step])
+                    <CodeMirror 
+                    value={scenario[step]['code']}
+                    width="800px"
+                    height="200px"
+                    theme={vscodeDark}
+                    editable={false}
+                    extensions={choseExtension(scenario[step]['type'])}/>
                     : null
                 }
             </div>

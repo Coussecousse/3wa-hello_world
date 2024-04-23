@@ -4,11 +4,12 @@ import { javascript } from "@codemirror/lang-javascript";
 
 import { useState, useCallback } from 'react';
 
-export default function JSBox() {
+export default function JSBox({ handleChangeCode }) {
     const [code, setCode] = useState('');
 
     const handleChange = useCallback(val => {
         setCode(val);
+        handleChangeCode(val, 'js');
     })
 
     return (

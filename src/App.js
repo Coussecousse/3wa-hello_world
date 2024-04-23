@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Scenario from './containers/Scenario/Scenario';
 import HTMLBox from './containers/HTMLBox/HTMLBox';
@@ -13,6 +13,44 @@ import logo_3WA from './assets/images/logo_3WA.svg';
 
 function App() {
   const [step, setStep] = useState(0);
+  const [html, setHtml] = useState('');
+  const [css, setCss] = useState(`
+    <style type='text/css' scoped>
+    body { background: white;}
+  
+    </style>`);
+  const [js, setJs] = useState('');
+  const [output, setOutput] = useState('');
+
+  function handleChangeCode(value, type) {
+    switch (type) {
+      case 'html':
+        setHtml(value);
+        break;
+      case 'css':
+        setCss(`
+        <style type='text/css' scoped>
+        body { background: white;}
+        ${value}
+        </style>`);
+        break;
+      case 'js':
+        setJs(`
+        <script>
+        ${value}
+        </script>`);
+        break;
+      default:
+        break;
+    }
+  }
+
+  function createOutput() {
+    setOutput(`
+    ${css}
+    ${html}
+    ${js}`)
+  }
 
   function addStep() {
     setStep(step + 1);
@@ -26,6 +64,10 @@ function App() {
     window.location.reload(false);
   }
 
+  useEffect(() => {
+    createOutput();
+  }, [html, css, js]);
+
   return (
     <div className="App">
       <img src={logo_3WA} className="logo"></img>
@@ -35,14 +77,14 @@ function App() {
       <section className='iframes-section'>
         <div className='iframes-container'>
           <div className="iframes-code">
-            <HTMLBox></HTMLBox>
-            <CSSBox></CSSBox>
+            <HTMLBox handleChangeCode={handleChangeCode}></HTMLBox>
+            <CSSBox handleChangeCode={handleChangeCode}></CSSBox>
           </div>
           <div className="iframe-output">
-            <OutputBox></OutputBox>
+            <OutputBox code={output}></OutputBox>
           </div>
         </div>
-        <JSBox></JSBox>
+        <JSBox handleChangeCode={handleChangeCode}></JSBox>
       </section>
       <RestartButton restart={restart} ></RestartButton>
     </div>
