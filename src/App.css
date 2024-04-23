@@ -69,9 +69,6 @@ h1 span{
     display: flex;
     flex-direction: column;
 }
-.iframe-output {
-    height: 100%;
-}
 
 /* CodeMirror-container */
 .codeMirror-container {
@@ -80,28 +77,9 @@ h1 span{
 }
 
 .cm-editor {
-    padding-top: 26px;
+    padding-top: 29px;
 }
 
-/* Code in scenario */
-.code-box {
-    height: 100%;
-    position: relative;
-    color: #D4D4D4;
-    font-family: monospace;
-    font-size: 1rem;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow: auto;
-    padding: 2rem 1rem 1rem 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #1E1E1E;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: thin;
-    scrollbar-color: #ccc #f5f5f5;
-}
 
 /* Differents codes type*/
 .typeCode {
