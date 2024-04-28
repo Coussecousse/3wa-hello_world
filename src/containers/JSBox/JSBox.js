@@ -14,7 +14,7 @@ export default function JSBox({ handleChangeCode }) {
 
     return (
         <div className="codeMirror-container">
-            <div className="typeCode Javascript">JS</div>
+            <div className="typeCode Javascript">Javascript</div>
             <CodeMirror
                 value={code}
                 height="200px"

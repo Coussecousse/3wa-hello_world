@@ -111,25 +111,6 @@ setInterval(addAnimateToLetter, 1500);
                 description : "Et voilà ! Vous avez codé votre premier élément ! Vous pouvez maintenant recommencer si vous voulez !",
             }
         ]
-    
-    function displayCode(scenario) {
-        switch(scenario['type']) {
-            case 'HTML': 
-            return (
-                <div className={`${style.code} code-box`}><div className={`typeCode HTML`}>{scenario['type']}</div>{scenario['code']}</div>
-                )
-            case 'CSS':
-                return (
-                    <div className={`${style.code} code-box`}><div className={`typeCode CSS`}>{scenario['type']}</div>{scenario['code']}</div>
-                )
-            case 'Javascript':
-                return (
-                    <div className={`${style.code} code-box`}><div className={`typeCode Javascript`}>{scenario['type']}</div>{scenario['code']}</div>
-                )
-            default : 
-                return null
-        }
-    }
 
     function choseExtension(type) {
         switch(type) {
@@ -150,14 +131,16 @@ setInterval(addAnimateToLetter, 1500);
             <div className={style.scenarioText}>
                 <p className={style.text}>{scenario[step]['description']}</p>
                 {scenario[step]['code'] ?
-                    // displayCode(scenario[step])
-                    <CodeMirror 
-                    value={scenario[step]['code']}
-                    width="800px"
-                    height="200px"
-                    theme={vscodeDark}
-                    editable={false}
-                    extensions={choseExtension(scenario[step]['type'])}/>
+                    <div className="codeMirror-container">
+                        <div className={`typeCode ${scenario[step]['type']}`}>{scenario[step]['type']}</div>
+                        <CodeMirror
+                        value={scenario[step]['code']}
+                        width="800px"
+                        height="200px"
+                        theme={vscodeDark}
+                        editable={false}
+                        extensions={choseExtension(scenario[step]['type'])}/>
+                    </div>
                     : null
                 }
             </div>
