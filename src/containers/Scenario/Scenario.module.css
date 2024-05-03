@@ -1,13 +1,216 @@
-.scenarioText{
-    height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.scenarioText {
+  display: flex;
+  min-height: 300px;
+  max-height: 800px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: #cd1316 3px solid;
+  border-radius: 15px;
+  background-color: #000;
+  padding: 1rem 2rem;
+  margin-right: 5rem;
+  cursor: pointer;
 }
 .text {
-    text-align: center;
+  text-align: center;
 }
 .code {
-    width: 90%;
+  width: 90%;
+}
+
+
+/* CodeMirror */
+.codeMirror {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+/* Pinguin */
+.penguin {
+  position: relative;
+  right: 0;
+  display: block;
+  margin-left: auto;
+  width: 15vh;
+  height: 15vh;
+  max-height: 150px;
+  max-width: 150px;
+  cursor: pointer;
+}
+
+.penguinTop {
+  top: 10%;
+  left: 25%;
+  background: rgb(92, 92, 92);
+  width: 50%;
+  height: 45%;
+  border-radius: 70% 70% 60% 60%;
+}
+
+.penguinBottom {
+  top: 40%;
+  left: 23.5%;
+  background: rgb(92, 92, 92);
+  width: 53%;
+  height: 45%;
+  border-radius: 70% 70% 100% 100%;
+}
+
+.rightHand {
+  top: 5%;
+  left: 25%;
+  background: rgb(92, 92, 92);
+  width: 30%;
+  height: 60%;
+  border-radius: 30% 30% 120% 30%;
+  transform: rotate(130deg);
+  z-index: -1;
+  animation-duration: 3s;
+  animation-name: wave;
+  animation-iteration-count: infinite;
+  transform-origin: 0% 0%;
+  animation-timing-function: linear;
+}
+
+.leftHand {
+  top: 0%;
+  left: 75%;
+  background: rgb(92, 92, 92);
+  width: 30%;
+  height: 60%;
+  border-radius: 30% 30% 30% 120%;
+  transform: rotate(-45deg);
+  z-index: -1;
+}
+
+.rightCheek {
+  top: 15%;
+  left: 35%;
+  background: white;
+  width: 60%;
+  height: 70%;
+  border-radius: 70% 70% 60% 60%;
+}
+
+.leftCheek {
+  top: 15%;
+  left: 5%;
+  background: white;
+  width: 60%;
+  height: 70%;
+  border-radius: 70% 70% 60% 60%;
+}
+
+.belly {
+  top: 60%;
+  left: 2.5%;
+  background: white;
+  width: 95%;
+  height: 100%;
+  border-radius: 120% 120% 100% 100%;
+}
+
+.rightFeet {
+  top: 85%;
+  left: 60%;
+  background: orange;
+  width: 15%;
+  height: 30%;
+  border-radius: 50% 50% 50% 50%;
+  transform: rotate(-80deg);
+  z-index: -2222;
+}
+
+.leftFeet {
+  top: 85%;
+  left: 25%;
+  background: orange;
+  width: 15%;
+  height: 30%;
+  border-radius: 50% 50% 50% 50%;
+  transform: rotate(80deg);
+  z-index: -2222;
+}
+
+.rightEye {
+  top: 45%;
+  left: 60%;
+  background: black;
+  width: 15%;
+  height: 17%;
+  border-radius: 50%;
+}
+
+.leftEye {
+  top: 45%;
+  left: 25%;
+  background: black;
+  width: 15%;
+  height: 17%;
+  border-radius: 50%;
+}
+
+.sparkle {
+  top: 25%;
+  left: 15%;
+  background: white;
+  width: 35%;
+  height: 35%;
+  border-radius: 50%;
+}
+
+.blushRight {
+  top: 65%;
+  left: 15%;
+  background: pink;
+  width: 15%;
+  height: 10%;
+  border-radius: 50%;
+}
+
+.blushLeft {
+  top: 65%;
+  left: 70%;
+  background: pink;
+  width: 15%;
+  height: 10%;
+  border-radius: 50%;
+}
+
+.beakTop {
+  top: 60%;
+  left: 40%;
+  background: orange;
+  width: 20%;
+  height: 10%;
+  border-radius: 50%;
+}
+
+.beakBottom {
+  top: 65%;
+  left: 42%;
+  background: orange;
+  width: 16%;
+  height: 10%;
+  border-radius: 50%;
+}
+
+
+.penguin * {
+  position: absolute;
+}
+
+@keyframes wave {
+  10% {
+    transform: rotate(110deg);
+  }
+  20% {
+    transform: rotate(130deg);
+  }
+  30% {
+    transform: rotate(110deg);
+  }
+  40% {
+    transform: rotate(130deg);
+  }
 }

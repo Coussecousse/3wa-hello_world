@@ -88,7 +88,7 @@ h1 span{
     left: 0;
     padding: .25rem 1rem;
     font-weight: 600;
-    z-index: 999;
+    z-index: 500;
 }
 .HTML {
     background-color: #E5532D;
@@ -103,4 +103,42 @@ h1 span{
 .Javascript {
     background-color: #F7DF1E;
     color: #000;
+}
+
+/* Scenario */
+#scenario {
+    z-index: 999;
+    position: absolute;
+    right: 1rem;
+    bottom: 0;
+}
+
+
+/* Scenario animations */
+.popUp {
+    animation: popUp .3s ease-in-out forwards;
+    transform-origin: bottom right;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0) translate(0, 100%);
+    }
+    100% {
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+.popOut {
+    animation: popOut .3s ease-in-out forwards;
+    transform-origin: bottom right;
+}
+
+@keyframes popOut {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+    100% {
+        transform: scale(0) translate(0, 100%);
+    }
 }

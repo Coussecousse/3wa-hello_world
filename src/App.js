@@ -6,13 +6,10 @@ import HTMLBox from './containers/HTMLBox/HTMLBox';
 import CSSBox from './containers/CSSBox/CSSBox';
 import JSBox from './containers/JSBox/JSBox';
 import OutputBox from './containers/OutputBox/OutputBox';
-import ScenarioButtons from './containers/ScenarioButtons/ScenarioButtons';
-import RestartButton from './containers/RestartButton/RestartButton';
 
 import logo_3WA from './assets/images/logo_3WA.svg';
 
 function App() {
-  const [step, setStep] = useState(0);
   const [html, setHtml] = useState('');
   const [css, setCss] = useState(`
     <style type='text/css' scoped>
@@ -52,18 +49,6 @@ function App() {
     ${js}`)
   }
 
-  function addStep() {
-    setStep(step + 1);
-  }
-
-  function removeStep() {
-    setStep(step - 1);
-  }
-
-  function restart() {
-    window.location.reload(false);
-  }
-
   useEffect(() => {
     createOutput();
   }, [html, css, js]);
@@ -72,8 +57,7 @@ function App() {
     <div className="App">
       <img src={logo_3WA} className="logo"></img>
       <h1><span className='left'>&lt;</span>Apprendre à coder avec la 3W Academy !<span className='right'>&gt;</span></h1>
-      <Scenario step={step}></Scenario>
-      <ScenarioButtons addStep={addStep} removeStep={removeStep} step={step}></ScenarioButtons>
+      <Scenario></Scenario>
       <section className='iframes-section'>
         <div className='iframes-container'>
           <div className="iframes-code">
@@ -86,7 +70,6 @@ function App() {
         </div>
         <JSBox handleChangeCode={handleChangeCode}></JSBox>
       </section>
-      <RestartButton restart={restart} ></RestartButton>
     </div>
   );
 }
