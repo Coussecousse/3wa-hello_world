@@ -57,18 +57,23 @@
 }
 
 .rightHand {
-  top: 5%;
-  left: 25%;
+  left: 15%;
   background: rgb(92, 92, 92);
   width: 30%;
   height: 60%;
-  border-radius: 30% 30% 120% 30%;
-  transform: rotate(130deg);
   z-index: -1;
+  transform-origin: 0% 0%;
+  border-radius: 30% 30% 120% 30%;
+  transform: rotate(45deg);
+}
+
+.rightHand.active {
+  top: 5%;
+  left: 25%;
+  transform: rotate(130deg);
   animation-duration: 3s;
   animation-name: wave;
   animation-iteration-count: infinite;
-  transform-origin: 0% 0%;
   animation-timing-function: linear;
 }
 

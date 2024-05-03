@@ -145,7 +145,6 @@ setInterval(addAnimateToLetter, 1500);
     }
 
     function handleCloseScenario(e) {
-        console.log(e.target);
         const closest = e.target.closest('.button');
         if (closest && closest.classList.contains("button")) return;
         setScenarioOpen(false);
@@ -157,17 +156,26 @@ setInterval(addAnimateToLetter, 1500);
 
     useEffect(() => {
         const text = document.getElementById('text-scenario');
+        const pingouinRightHand = document.querySelector(`.${style.rightHand}`);
         if (scenarioOpen) {
             text.classList.contains('popOut') ? 
                 text.classList.replace('popOut', 'popUp')
                 : text.classList.add('popUp');
+
             setTimeout(() => {
                 text.style.display = 'flex';
+                if (!pingouinRightHand.classList.contains(style.active)) {
+                    pingouinRightHand.classList.add(style.active);
+                }
             }, 300);
         } else {
             text.classList.contains('popUp') ?
                 text.classList.replace('popUp', 'popOut')
                 : text.classList.add('popOut');
+
+            if (pingouinRightHand.classList.contains(style.active)) {
+                pingouinRightHand.classList.remove(style.active);
+            }
             setTimeout(() => {
                 text.style.display = 'none';
             }, 300);
@@ -203,7 +211,7 @@ setInterval(addAnimateToLetter, 1500);
             </div>
             <div className={style.penguin} onClick={handleScenario}>
                 <div className={style.penguinBottom}>
-                    <div className={style.rightHand}></div>
+                    <div className={`${style.rightHand} ${style.active}`}></div>
                     <div className={style.leftHand}></div>
                     <div className={style.rightFeet}></div>
                     <div className={style.leftFeet}></div>
