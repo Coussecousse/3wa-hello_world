@@ -16,10 +16,19 @@ export default function Scenario() {
 
     function addStep() {
         setStep(step + 1);
+        handlePopupAnimation();
     }
     
     function removeStep() {
         setStep(step - 1);
+        handlePopupAnimation();
+    }
+
+    function handlePopupAnimation() {
+        setScenarioOpen(false);
+        setTimeout(() => {
+            setScenarioOpen(true);
+        }, 250);
     }
     
     function restart() {
@@ -154,32 +163,42 @@ setInterval(addAnimateToLetter, 1500);
         setScenarioOpen(!scenarioOpen);
     } 
 
-    useEffect(() => {
+    function animePopUp(stateOfTheWindow) {
         const text = document.getElementById('text-scenario');
         const pingouinRightHand = document.querySelector(`.${style.rightHand}`);
-        if (scenarioOpen) {
+
+        if (stateOfTheWindow) {
+            // Remove popOut class if exist and add popUp class
             text.classList.contains('popOut') ? 
                 text.classList.replace('popOut', 'popUp')
                 : text.classList.add('popUp');
 
             setTimeout(() => {
                 text.style.display = 'flex';
+
+                // Anime the pinguin hand
                 if (!pingouinRightHand.classList.contains(style.active)) {
                     pingouinRightHand.classList.add(style.active);
                 }
-            }, 300);
+            }, 250);        
         } else {
+            // Remove popUp class if exist and add popOut class
             text.classList.contains('popUp') ?
-                text.classList.replace('popUp', 'popOut')
-                : text.classList.add('popOut');
+            text.classList.replace('popUp', 'popOut')
+            : text.classList.add('popOut');
 
+            // Anime the pinguin hand
             if (pingouinRightHand.classList.contains(style.active)) {
                 pingouinRightHand.classList.remove(style.active);
             }
             setTimeout(() => {
                 text.style.display = 'none';
-            }, 300);
+            }, 250);
         }
+    }
+
+    useEffect(() => {
+        animePopUp(scenarioOpen);
     }, [scenarioOpen])
 
     return (
@@ -203,7 +222,8 @@ setInterval(addAnimateToLetter, 1500);
                     addStep={addStep} 
                     removeStep={removeStep} 
                     step={step}
-                    max={scenario.length}></ScenarioButtons>
+                    max={scenario.length}
+                    ></ScenarioButtons>
                 { step === scenario.length - 1 ?
                     <RestartButton restart={restart} ></RestartButton>
                     : null 
