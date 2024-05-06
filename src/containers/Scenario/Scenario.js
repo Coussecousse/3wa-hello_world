@@ -15,12 +15,16 @@ export default function Scenario() {
     const [scenarioOpen, setScenarioOpen] = useState(true);
 
     function addStep() {
-        setStep(step + 1);
+        setTimeout(() => {
+            setStep(step + 1);
+        }, 250);
         handlePopupAnimation();
     }
     
     function removeStep() {
-        setStep(step - 1);
+        setTimeout(() => {
+            setStep(step - 1);
+        }, 250);
         handlePopupAnimation();
     }
 
