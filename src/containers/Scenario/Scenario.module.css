@@ -221,8 +221,8 @@
 
 .thoughts {
   position: absolute;
-  right: 5.2rem;
-  top: -2.5rem;
+  right: 5rem;
+  top: -2rem;
   transition: .2s;
   opacity: 0;
 }
