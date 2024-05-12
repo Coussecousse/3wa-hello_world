@@ -267,7 +267,7 @@ setInterval(addAnimateToLetter, 1500);
 
     return (
         <section id="scenario">
-            <div className={style.scenarioText} id="text-scenario" onClick={handleCloseScenario}>
+            <div className={`${style.scenarioText} ${style.triRight} ${style.btmRight}`} id="text-scenario" onClick={handleCloseScenario}>
                 <p className={style.text}>{scenario[step]['description']}</p>
                 {scenario[step]['code'] ?
                     <div className={`codeMirror-container ${style.codeMirror}`}>
