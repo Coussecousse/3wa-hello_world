@@ -231,10 +231,12 @@ setInterval(addAnimateToLetter, 1500);
         if (activeThoughts) {
             thoughts.style.display = 'block';
             thoughts.classList.add(style.active);
-            startAnimationThoughts();
-            setIntervalId(setInterval(() => {
+            setTimeout(() => {
                 startAnimationThoughts();
-            }, 3500));
+                setIntervalId(setInterval(() => {
+                    startAnimationThoughts();
+                }, 3500));
+            }, 250);
         } else {
             thoughts.classList.remove(style.active);
             setTimeout(() => {
@@ -243,8 +245,8 @@ setInterval(addAnimateToLetter, 1500);
 
             const bubbles = document.querySelectorAll('.bubble');
             bubbles.forEach(bubble => {
-                if (bubble.classList.contains('animate')) {
-                    bubble.classList.remove('animate');
+                if (bubble.classList.contains(style.animate)) {
+                    bubble.classList.remove(style.animate);
                 };
             });
         }
