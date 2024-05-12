@@ -13,7 +13,7 @@ function App() {
   const [html, setHtml] = useState('');
   const [css, setCss] = useState(`
     <style type='text/css' scoped>
-    body { background: white;}
+    body { background: white; overflow: hidden; margin: 0;}
   
     </style>`);
   const [js, setJs] = useState('');
@@ -27,7 +27,7 @@ function App() {
       case 'css':
         setCss(`
         <style type='text/css' scoped>
-        body { background: white;}
+        body { background: white; overflow: hidden; margin: 0;}
         ${value}
         </style>`);
         break;

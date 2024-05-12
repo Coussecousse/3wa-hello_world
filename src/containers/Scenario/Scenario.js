@@ -92,6 +92,7 @@ h1 {
     background-color: #000;
     /*  On centre l'élement qu'il contient, c'est à dire le titre  */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -160,8 +161,12 @@ setInterval(addAnimateToLetter, 1500);
     }
 
     function handleCloseScenario(e) {
-        const closest = e.target.closest('.button');
-        if (closest && closest.classList.contains("button")) return;
+        const closestButton = e.target.closest('.button');
+        if (closestButton && closestButton.classList.contains("button")) return;
+
+        const closestCodeMirror = e.target.closest('.codeMirror-container');
+        if (closestCodeMirror && closestCodeMirror.classList.contains("codeMirror-container")) return;
+
         setScenarioOpen(false);
         setActiveThoughts(true);
     }
