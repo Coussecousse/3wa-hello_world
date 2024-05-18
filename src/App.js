@@ -70,14 +70,13 @@ function App() {
         && closestCodeMirror.classList.contains("codeMirror-container")) return;
     
     if (closestButton) {
-        if (closestButton.id !== "i-try" 
-          && closestButton.classList.contains("button")) return;
-    }
-    
-    if (closestButton 
-        && closestButton.id !== "i-try" && closestTextScenario) {
-        if (closestButtonClose 
-          && closestButtonClose.id !== "close") return;
+      if (closestButton.id !== "i-try") {
+        if (closestButton.classList.contains("button")) return;
+        if (closestTextScenario) {
+          if (closestButtonClose 
+            && closestButtonClose.id !== "close") return;
+        }
+      }
     }
     
     setScenarioOpen(false);
