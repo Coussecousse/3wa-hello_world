@@ -162,7 +162,7 @@ setInterval(addAnimateToLetter, 1500);
 
     function handleCloseScenario(e) {
         const closestButton = e.target.closest('.button');
-        if (closestButton && closestButton.classList.contains("button")) return;
+        if (closestButton && closestButton.classList.contains("button") && closestButton.id !== "i-try") return;
 
         const closestCodeMirror = e.target.closest('.codeMirror-container');
         if (closestCodeMirror && closestCodeMirror.classList.contains("codeMirror-container")) return;
@@ -298,6 +298,7 @@ setInterval(addAnimateToLetter, 1500);
                     removeStep={removeStep} 
                     step={step}
                     max={scenario.length}
+                    close={handleCloseScenario}
                     ></ScenarioButtons>
                 { step === scenario.length - 1 ?
                     <RestartButton restart={restart} ></RestartButton>
