@@ -53,11 +53,65 @@ function App() {
     createOutput();
   }, [html, css, js]);
 
+  // Scenario
+  const [scenarioOpen, setScenarioOpen] = useState(true);
+  const [activeThoughts, setActiveThoughts] = useState(false);
+
+  function handleCloseScenario(e) {
+    const closestButton = e.target.closest('.button');
+    const closestTextScenario = e.target.closest('#text-scenario');
+    const closestPingouin = e.target.closest('#pengouin');
+    const closestButtonClose = e.target.closest('button');
+    const closestCodeMirror = e.target.closest('.codeMirror-container');
+    
+    if (closestPingouin) return;
+    
+    if (closestCodeMirror 
+        && closestCodeMirror.classList.contains("codeMirror-container")) return;
+    
+    if (closestButton) {
+        if (closestButton.id !== "i-try" 
+          && closestButton.classList.contains("button")) return;
+    }
+    
+    if (closestButton 
+        && closestButton.id !== "i-try" && closestTextScenario) {
+        if (closestButtonClose 
+          && closestButtonClose.id !== "close") return;
+    }
+    
+    setScenarioOpen(false);
+    setActiveThoughts(true);
+  }
+
+  function handlePopupAnimation() {
+    setScenarioOpen(false);
+    setTimeout(() => {
+        setScenarioOpen(true);
+    }, 250);
+  }
+
+  function handleScenario() {  
+    if (scenarioOpen) {
+      setScenarioOpen(false);
+      setActiveThoughts(true);
+    } else {
+      setScenarioOpen(true);
+      setActiveThoughts(false);
+    }
+  } 
+
   return (
-    <div className="App">
+    <div className="App" onClick={handleCloseScenario}>
       <img src={logo_3WA} className="logo"></img>
       <h1><span className='left'>&lt;</span>Apprendre à coder avec la 3W Academy !<span className='right'>&gt;</span></h1>
-      <Scenario></Scenario>
+      <Scenario
+        scenarioOpen={scenarioOpen}
+        activeThoughts={activeThoughts}
+        handleCloseScenario={handleCloseScenario}
+        handlePopupAnimation={handlePopupAnimation}
+        handleScenario={handleScenario}
+        ></Scenario>
       <section className='iframes-section'>
         <div className='iframes-container'>
           <div className="iframes-code">

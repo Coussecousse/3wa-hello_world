@@ -144,3 +144,9 @@ h1 span{
         transform: scale(0) translate(0, 100%);
     }
 }
+
+/* Pengouin */
+#pengouin {
+    width: 100%;
+    height: 100%;
+}

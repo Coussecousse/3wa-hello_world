@@ -9,12 +9,16 @@ import { javascript } from "@codemirror/lang-javascript";
 import ScenarioButtons from '../ScenarioButtons/ScenarioButtons'
 import RestartButton from '../RestartButton/RestartButton';
 
-export default function Scenario() {
+export default function Scenario({
+    scenarioOpen,
+    activeThoughts,
+    handleCloseScenario, 
+    handlePopupAnimation,
+    handleScenario
+}) {
 
     const [step, setStep] = useState(0);
-    const [scenarioOpen, setScenarioOpen] = useState(true);
     const [intervalId, setIntervalId] = useState(null);
-    const [activeThoughts, setActiveThoughts] = useState(false);
 
     function addStep() {
         setTimeout(() => {
@@ -28,13 +32,6 @@ export default function Scenario() {
             setStep(step - 1);
         }, 250);
         handlePopupAnimation();
-    }
-
-    function handlePopupAnimation() {
-        setScenarioOpen(false);
-        setTimeout(() => {
-            setScenarioOpen(true);
-        }, 250);
     }
     
     function restart() {
@@ -160,27 +157,6 @@ setInterval(addAnimateToLetter, 1500);
         }
     }
 
-    function handleCloseScenario(e) {
-        const closestButton = e.target.closest('.button');
-        if (closestButton && closestButton.classList.contains("button") && closestButton.id !== "i-try") return;
-
-        const closestCodeMirror = e.target.closest('.codeMirror-container');
-        if (closestCodeMirror && closestCodeMirror.classList.contains("codeMirror-container")) return;
-
-        setScenarioOpen(false);
-        setActiveThoughts(true);
-    }
-
-    function handleScenario() {   
-        if (scenarioOpen) {
-            setScenarioOpen(false);
-            setActiveThoughts(true);
-        } else {
-            setScenarioOpen(true);
-            setActiveThoughts(false);
-        }
-    } 
-
     function animePopUp(stateOfTheWindow) {
         const text = document.getElementById('text-scenario');
         const pingouinRightHand = document.querySelector(`.${style.rightHand}`);
@@ -275,7 +251,7 @@ setInterval(addAnimateToLetter, 1500);
     return (
         <section id="scenario">
             <div className={`${style.scenarioText} ${style.triRight} ${style.btmRight}`} id="text-scenario" onClick={handleCloseScenario}>
-                <button className={style.xMarkButton} onClick={handleCloseScenario}>
+                <button className={style.xMarkButton} id="close" onClick={handleCloseScenario}>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" height="100%" width="100%" fill="#cd1316">
                     <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
                 </button>
@@ -316,27 +292,29 @@ setInterval(addAnimateToLetter, 1500);
                 </svg>
 
             </div>
-            <div className={style.penguin} onClick={handleScenario}>
-                <div className={style.penguinBottom}>
-                    <div className={`${style.rightHand} ${style.active}`}></div>
-                    <div className={style.leftHand}></div>
-                    <div className={style.rightFeet}></div>
-                    <div className={style.leftFeet}></div>
-                </div>
-                <div className={style.penguinTop}>
-                    <div className={style.rightCheek}></div>
-                    <div className={style.leftCheek}></div>
-                    <div className={style.belly}></div>
-                    <div className={style.rightEye}>
-                    <div className={style.sparkle}></div>
+            <div className={style.pengouin} onClick={handleScenario}>
+                <div id="pengouin">
+                    <div className={style.pengouinBottom}>
+                        <div className={`${style.rightHand} ${style.active}`}></div>
+                        <div className={style.leftHand}></div>
+                        <div className={style.rightFeet}></div>
+                        <div className={style.leftFeet}></div>
                     </div>
-                    <div className={style.leftEye}>
-                    <div className={style.sparkle}></div>
+                    <div className={style.pengouinTop}>
+                        <div className={style.rightCheek}></div>
+                        <div className={style.leftCheek}></div>
+                        <div className={style.belly}></div>
+                        <div className={style.rightEye}>
+                        <div className={style.sparkle}></div>
+                        </div>
+                        <div className={style.leftEye}>
+                        <div className={style.sparkle}></div>
+                        </div>
+                        <div className={style.blushRight}></div>
+                        <div className={style.blushLeft}></div>
+                        <div className={style.beakTop}></div>
+                        <div className={style.beakBottom}></div>
                     </div>
-                    <div className={style.blushRight}></div>
-                    <div className={style.blushLeft}></div>
-                    <div className={style.beakTop}></div>
-                    <div className={style.beakBottom}></div>
                 </div>
             </div>
         </section>
