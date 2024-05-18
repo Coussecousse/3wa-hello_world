@@ -262,3 +262,22 @@
 	border: 12px solid;
 	border-color: #000 #000 transparent transparent;
 }
+
+/* X Mark button */
+.xMarkButton {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  border-radius: 100%;
+  background-color: #000;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+
+.xMarkButton > svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
